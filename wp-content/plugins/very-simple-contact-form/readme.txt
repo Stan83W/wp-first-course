@@ -1,0 +1,267 @@
+=== Very Simple Contact Form ===
+Contributors: Guido07111975
+Version: 9.0
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Requires at least: 4.7
+Tested up to: 4.9
+Stable tag: trunk
+Tags: simple, contact, form, contact form, email
+
+
+This is a very simple contact form. Use shortcode [contact] to display form on page or use the widget.
+
+
+== Description ==
+= About =
+This is a very simple responsive translatable contact form.
+
+Form only contains fields for Name, Email, Subject and Message. And a simple captcha (random number).
+
+Use a shortcode to display your form on a page or use the widget.
+
+You can personalize your form via the settingspage or by adding attributes to the shortcode or the widget.
+
+It's also possible to list form submissions in your dashboard.
+
+= How to use =
+After installation add shortcode `[contact]` on your page to display the form.
+
+Or go to Appearance > Widgets and add the widget to your sidebar.
+
+By default form submissions will be send to your site's admin email address (set in Settings > General). It's also possible to send a confirmation email to sender.
+
+= Settingspage =
+Via Settings > VSCF you can:
+
+* Keep form submissions and settings when uninstalling plugin
+* Activate the listing of form submissions in your dashboard
+* Activate confirmation email to sender
+* Activate a privacy checkbox on form
+* Disable the collection of IP address
+* Change form labels and messages
+
+Settings and labels can be overwritten when using the relevant (shortcode) attributes below.
+
+= Shortcode attributes =
+* Change admin email address: `[contact email_to="your-email-here"]`
+* Send to multiple email addresses: `[contact email_to="first-email-here, second-email-here"]`
+* Change "From" email header: `[contact from_header="your-email-here"]`
+* Hide subject field: `[contact hide_subject="true"]`
+* Change email subject: `[contact subject="your subject here"]`
+* Activate confirmation email to sender: `[contact auto_reply="true"]`
+* Scroll back to form location after submit: `[contact scroll_to_form="true"]`
+
+Field labels:
+
+* Change name label: `[contact label_name="your label here"]`
+* Change email label: `[contact label_email="your label here"]`
+* Change subject label: `[contact label_subject="your label here"]`
+* Change captcha label: `[contact label_captcha="your label here"]`
+* Change message label: `[contact label_message="your label here"]`
+* Change privacy label: `[contact label_privacy="your label here"]`
+* Change submit label: `[contact label_submit="your label here"]`
+
+Field error labels:
+
+* Change name error label: `[contact error_name="your label here"]`
+* Change email error label: `[contact error_email="your label here"]`
+* Change subject error label: `[contact error_subject="your label here"]`
+* Change captcha error label: `[contact error_captcha="your label here"]`
+* Change message error label: `[contact error_message="your label here"]`
+
+Form messages:
+
+* Change sending failed message: `[contact message_error="your message here"]`
+* Change sending succeeded ("thank you") message: `[contact message_success="your message here"]`
+* Change "thank you" message in confirmation email: `[contact auto_reply_message="your message here"]`
+
+You can also add multiple attributes. Use a single whitespace to separate multiple attributes.
+
+* Example: `[contact email_to="your-email-here" subject="your subject here"]`
+
+= Widget attributes =
+The widget supports the same attributes. Enter them without shortcode itself and without brackets.
+
+Example 1:
+
+* If shortcode attribute is: `[contact email_to="your-email-here"]`
+* Widget attribute will be: `email_to="your-email-here"`
+
+Example 2:
+
+* If shortcode attribute is: `[contact email_to="your-email-here" subject="your subject here"]`
+* Widget attribute will be: `email_to="your-email-here" subject="your subject here"`
+
+= List form submissions in dashboard =
+Via Settings > VSCF you can activate the listing of form submissions in your dashboard.
+
+After activation you will notice a new menu item called "Submissions".
+
+Plugin [Contact Form DB](https://github.com/mdsimpson/contact-form-7-to-database-extension/releases) is also supported.
+
+= SMTP =
+SMTP (Simple Mail Transfer Protocol) is an internet standard for sending emails.
+
+WordPress supports the PHP `mail()` function by default, but when using SMTP there's less chance your form submissions are being marked as spam.
+
+You should install an additional plugin for this. You could install for example:
+
+* [Gmail SMTP](https://wordpress.org/plugins/gmail-smtp/)
+* [Easy WP SMTP](https://wordpress.org/plugins/easy-wp-smtp/)
+* [WP mail SMTP](https://wordpress.org/plugins/wp-mail-smtp/)
+* [Post SMTP](https://wordpress.org/plugins/post-smtp/)
+
+Because I'm not the developer of these SMTP plugins, I will not give support. And use them at your own risk.
+
+= Question? =
+Please take a look at the FAQ section.
+
+= Translation =
+Not included but plugin supports WordPress language packs.
+
+More [translations](https://translate.wordpress.org/projects/wp-plugins/very-simple-contact-form) are very welcome!
+
+= Credits =
+Without the WordPress codex and help from the WordPress community I was not able to develop this plugin, so: thank you!
+
+Enjoy!
+
+
+== Installation ==
+Please check Description section for installation info.
+
+
+== Frequently Asked Questions ==
+= How do I set plugin language? =
+Plugin will use the site language, set in Settings > General.
+
+If plugin isn't translated into this language, language fallback will be English.
+
+= What is the default email subject? =
+By default the email subject contains the name of your site, followed by the subject that sender has filled in. If subject field is hidden it only contains the name of your site.
+
+You can change this subject using an attribute.
+
+This subject will also be used in the confirmation email to sender.
+
+= Why is the "from" email address not from sender? =
+I have used a default so called "From" email header to avoid form submissions being marked as spam.
+
+Best practice is using a "From" email header (an email address) that ends with your site domain.
+
+That's why the default "From" email header starts with "wordpress" and ends with your site domain.
+
+You can change the "From" email header using an attribute.
+
+Your reply to sender will use another email header, called "Reply-To", which is the email address that sender has filled in.
+
+= What do you mean with "thank you" message? =
+A "thank you" message is displayed after submitting the form and in the confirmation email to sender.
+
+It's the message: Thank you! You will receive a response as soon as possible.
+
+You can change this message via Settings > VSCF or using an attribute.
+
+= Can I use multiple shortcodes? =
+Do not use multiple shortcodes on the same page. This might cause a conflict.
+
+But you can use the shortcode on a page and the widget in your sidebar.
+
+= Why does form submission fail? =
+An error message is displayed if plugin was unable to send form. This might be a server issue.
+
+Your hosting provider might have disabled the PHP `mail()` function of your server. Ask them for more info about this.
+
+They might advice you to install a SMTP plugin.
+
+= Why am I not receiving form submissions? =
+* Please also check the junk/spam folder of your mailbox
+* Check installation info above and check shortcode (attributes) for mistakes
+* Install another contact form plugin to determine whether it's caused by my plugin or something else
+* In case you're using a SMTP plugin, please check their settingspage for mistakes
+
+= Why does the captcha not display properly? =
+The captcha (random number) uses a php session and cookie to temporary store the number.
+
+Your hosting provider might have disabled the use of sessions. Ask them for more info about this.
+
+Or your browser blocks cookies. You should enable cookies.
+
+= Does this plugin has anti-spam features? =
+Of course, the native WordPress sanitization and escaping functions are included.
+
+It also contains 2 (invisible) honeypot fields and a simple captcha (random number).
+
+= Does VSCF meet the conditions of the GDPR? =
+The General Data Protection Regulation (GDPR) is a regulation in EU law on data protection and privacy for all individuals within the European Union.
+
+I did my best to meet the conditions of the GDPR:
+
+* You can activate a privacy checkbox on form
+* You can disable the collection of IP address
+* The cookie (used for the captcha) does not store personal data
+* Form submissions are safely stored in database, similar to how the native posts and pages are stored
+* You can easily delete form submissions from database
+
+= Why no Semantic versioning? =
+At time of initial plugin release I wasn't aware of the Semantic versioning (sequence of three digits).
+
+= How can I make a donation? =
+You like my plugin and you're willing to make a donation? Nice! There's a PayPal donate link at my website.
+
+= Other question or comment? =
+Please open a topic in plugin forum.
+
+
+== Changelog ==
+= Version 9.0 =
+* had to remove the alternative captcha again (introduced in version 8.9)
+* the captcha is currently the only way to avoid resubmitting form upon page refresh
+* the alternative captcha wasn't able to avoid this
+* have made file structure more clear
+* so added files vscf-page-shortcode and vscf-widget-shortcode
+* these 2 files contain the shortcode for page and widget
+* and file vscf-form now only contains the html form itself
+* removed file vscf-widget-form
+* changed css class "error" and "hide" into "vscf-error" and "vscf-hide"
+* added prefix to both classes to avoid unexpected css being added from your theme or other plugins
+* fix in text domain
+* removed unnecessary notifications from changelog (such as "updated readme file" and "updated FAQ")
+
+= Version 8.9 =
+* added files vscf-validate and vscf-submission
+* relocated validation and sending & saving from shortcode files to these 2 new files
+* new setting: generate random number without using a PHP session
+* this is less secure. use this if default captcha is not working properly
+* added tabbed navigation on settingspage
+* some textual changes (thanks Tom)
+
+= Version 8.8 =
+* fix: captcha in file vscf-widget-form
+
+= Version 8.7 =
+* request: added (shortcode) attributes for all field labels and form messages again
+* using an attribute will always overwrite it's corresponding settingspage field
+* added file vscf-labels (relocated labels from shortcode files to this new file)
+* added stripslashes() and htmlspecialchars_decode() filter for form and form submission
+* now unexpected backslashes are removed when using single or double quote
+* and certain HTML entities are converted to normal characters
+* changed required version to 4.7 because of new filter sanitize_textarea_field()
+
+= Version 8.6 =
+* readme file: removed donate link
+* updated theme author info
+
+For all versions please check file changelog.
+
+
+== Screenshots == 
+1. Very Simple Contact Form (Twenty Seventeen theme).
+2. Very Simple Contact Form (Twenty Seventeen theme).
+3. Very Simple Contact Form widget (Twenty Seventeen theme).
+4. Very Simple Contact Form widget (dashboard).
+5. Very Simple Contact Form settingspage (dashboard).
+6. Very Simple Contact Form settingspage (dashboard).
+7. Very Simple Contact Form settingspage (dashboard).
+8. Very Simple Contact Form submissions (dashboard).
